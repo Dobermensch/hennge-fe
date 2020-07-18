@@ -10,7 +10,7 @@
         :is-expanded="false"
       />
     </div>
-    <div class="search-icon-container">
+    <div class="search-icon-container" @click="SearchClicked">
       <SearchIcon width="50" height="20" class="search-icon" />
     </div>
   </div>
@@ -19,6 +19,8 @@
 <script>
 import Calendar from "@/assets/svg/icon_calender.svg"
 import SearchIcon from "@/assets/svg/icon_search.svg"
+import { EventBus } from "@/services/event-bus.js"
+
 
 export default {
   name: 'datepicker',
@@ -31,8 +33,10 @@ export default {
       dates: { start: new Date(), end: new Date() }
     }
   },
-  mounted() {
-    
+  methods: {
+    SearchClicked() {
+      EventBus.$emit('datesChanged', this.dates);
+    }
   }
 }
 </script>

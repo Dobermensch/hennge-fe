@@ -24,7 +24,6 @@ export default {
   padding-top: 20px;
   padding-left: 45px;
   padding-right: 45px;
-  border: 1px solid red;
   position: relative;
 }
 
