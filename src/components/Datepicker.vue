@@ -21,7 +21,6 @@ import Calendar from "@/assets/svg/icon_calender.svg"
 import SearchIcon from "@/assets/svg/icon_search.svg"
 import { EventBus } from "@/services/event-bus.js"
 
-
 export default {
   name: 'datepicker',
   components: {
@@ -30,13 +29,16 @@ export default {
   },
   data() {
     return {
-      dates: { start: new Date(), end: new Date() }
+      dates: { start: new Date(new Date().setHours(0,0,0,0)), end: new Date(new Date().setHours(23,59,59,999)) }
     }
   },
   methods: {
     SearchClicked() {
       EventBus.$emit('datesChanged', this.dates);
     }
+  },
+  mounted() {
+    this.SearchClicked();
   }
 }
 </script>
